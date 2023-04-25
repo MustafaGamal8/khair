@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'Tajawal'; 
+  src: url('css/fonts/Tajawal-ExtraLight-1.ttf') ; 
+}
+
+:root{
+  --maindark:#0f172a;
+  --secdark:#343a40;
+  --blue:#2ca4ab;
+  --lightyellow:#ffe197;
+  --white:white;
+}
+
+html::-webkit-scrollbar {
+  width: 15px;
+}
+ 
+html::-webkit-scrollbar-track {
+  background: var(--maindark);
+}
+ 
+html::-webkit-scrollbar-thumb {
+  border: 3px solid var(--lightyellow);
+  border-radius: 20px;
+}
+*{
+  padding: 0;
+  margin: 0;
+  font-family: "Tajawal";
+
+}
+
+::selection{
+  background-color: var(--blue);
+}
+
+body {
+  background-color: var(--maindark);
+  color: white;
+  text-align: right;
+  overflow-x: hidden;
+}
+
+/* ____________________ Navbar*/
+nav {
+  /* background-color: var(--blue); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  margin-top: 15px;
+}
+#menu   {
+  position: relative;
+  height: 50px;
+  width: 50%;
+  display: block;
+  display: flex;
+  justify-content: center;
+}
+
+#menu_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+#menu_icon{
+  display: none;
+}
+
+.menuanimation{
+  animation: menuanimation 1s forwards;
+}
+.menuanimation2{
+  animation: menuanimation 1s forwards reverse;
+}
+@keyframes menuanimation {
+  0%{
+    width: 0;
+  }
+  100%{
+    width: 250px;
+    background-color: var(--maindark);
+  }
+}
+.menubaranimation{
+  animation: menubaranimation 1s forwards;
+}
+.menubaranimation2{
+  animation: menubaranimation 1s forwards reverse;
+}
+@keyframes menubaranimation {
+  0%{
+    height: 0;
+  }
+  100%{
+    height: 50%;
+  }
+}
+nav ul li{
+  margin: 10px;
+}
+nav ul li a {
+  margin: 10px;
+  transition: .5s;
+  color: var(--white);
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 2px;
+  font-weight: 550;
+}
+
+nav ul li a:hover {
+  color: var(--blue);
+}
+
+#contact {
+  color: white;
+  background-color: var(--blue);
+  
+}
+
+
+#menu_icon{
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+}
+/* ____________________End of Navbar*/
+/* __________________media  */
+  
+  @media (max-width:1200px) {
+ #menu   {
+  position: fixed;
+  top: 10%;
+  left: 0;
+  height: 100vh;
+  width: 0;
+}
+#menu_icon{
+  display: block;
+}
+#menu_bar {
+  display: none;
+  flex-direction: column-reverse;
+
+}
+  #circle{
+    clip-path: circle(50% at right 100%);
+  }
+  
+  .head{
+    display: flex;
+    flex-direction: column;
+  }
+  .head img {
+    width: 200px;
+  }
+}

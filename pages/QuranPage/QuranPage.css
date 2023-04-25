@@ -1,0 +1,338 @@
+
+svg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#quranlogo {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#quranlogo svg {
+  position: relative;
+  color: white;
+  width: 400px;
+}
+
+/* ____________________ surah box*/
+#surahbx {
+  margin: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ___ */
+.surah {
+  z-index: 1;
+  position: relative;
+  margin: 20px;
+  width: 320px;
+  height: 80px;
+  border: 1px solid var(--secdark);
+  border-radius: 5px;
+  /* display: flex;
+justify-content: space-around;
+align-items: center; */
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: center;
+  justify-items: center;
+  transition: .1s;
+  text-transform: uppercase;
+  user-select: none;
+  cursor: pointer;
+}
+
+.surah::before {
+  content: "";
+  position: absolute;
+  width: 2%;
+  height: 100%;
+  background-color: var(--blue);
+  z-index: -1;
+  top: 0;
+  left: 0;
+  transition: 2s;
+}
+
+.surahNamberbx {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  width: 35px;
+  height: 35px;
+  background-color: var(--secdark);
+  transition: .5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.surahNameAr {
+  font-size: 28px;
+}
+
+.ayahtNumbersbx {
+  text-align: center;
+}
+
+.surah:hover::before {
+  width: 100%;
+}
+
+/* ____________________END of surah box*/
+/* ____________________ Search box*/
+#searchbx{
+  width: 50%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+}
+#searchinput{
+  border: 5px solid var(--blue);
+  padding: 10px;
+  width: 80%;
+  border-radius: 5px;
+  text-align: right;
+  font-size: 20px;
+  transition: .5s;
+  box-shadow: 1px 1px 15px rgba(255, 255, 255, 0.3);
+  color: black;
+  font-weight: 900;
+}
+#searchinput:focus{
+  outline: none;
+  scale: 1.1;
+  box-shadow: none;
+}
+
+/* ____________________END of search box*/
+/* ____________________ ayat box*/
+.ayatanimation {
+  animation: ayatanimation 2s forwards;
+}
+
+@keyframes ayatanimation {
+  0% {
+
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+
+.ayatanimation2 {
+  animation: ayatanimation2 2s forwards reverse;
+}
+
+@keyframes ayatanimation2 {
+  0% {
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+
+#ayatbx {
+  position: fixed;
+  background-color: var(--maindark);
+  width: 100%;
+  height: 0%;
+  z-index: 5;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#ayatbx main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#ayahname {
+  margin-top: 25px;
+  text-align: center;
+}
+
+#arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--blue);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 15px rgba(255, 255, 255, 0.3);  
+  cursor: pointer;
+}
+
+#ayat {
+  border: 1px solid var(--blue);
+  margin: 35px ;
+  padding: 10px;
+  border-radius: 5px;
+  line-height: 50px;
+  letter-spacing: 2px;
+  height: max-content;
+}
+#numberofaya{
+  border: 1px solid var(--lightyellow);
+  width: max-content;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  padding: 0 8px;
+  text-align: center;
+  display: inline;
+}
+
+
+.secnav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 0 ;
+  width: 80%;
+}
+#tashkel{
+  position: relative;
+  background-color: var(--blue);
+  width: 70px;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  transition: .5s;
+  cursor: pointer;
+  border: none;
+  color: var(--white);
+}
+#tashkel:hover{
+  background-color: var(--lightyellow);
+}
+
+/* ____________________END of ayat box*/
+
+#darkmode {
+  position: relative;
+  background-color: var(--blue);
+  width: 70px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+#darkmode span{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  background-color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .5s;
+}
+#darkmode span::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -7%;
+  background-color: var(--blue);
+  width: 20px;
+  height: 25px;
+  border-radius: 50%;
+  
+}
+
+
+.darkmode{
+  
+  animation: darkmode .5s forwards;
+}
+.darkmode::after{
+
+  animation: darkmodeafter .5s forwards;
+}
+.lightmode{
+  
+  background-color: var(--lightyellow);
+  left: 60%;
+  animation: darkmode .5s forwards reverse;
+}
+.lightmode::after{
+  
+  background-color: transparent;
+  animation: darkmodeafter .5s forwards reverse;
+}
+@keyframes darkmode {
+  0%{
+    background-color: white;
+    left: 5%;
+
+  }
+  100%{
+    background-color: var(--lightyellow);
+    left: 60%;
+  }
+}
+@keyframes darkmodeafter {
+  0%{
+    background-color: var(--blue);
+
+  }
+  100%{
+    background-color: transparent;
+  }
+}
+
+
+/* ___________arrows */
+
+.arrows {
+  user-select: none;
+  display: flex;
+  gap: 50px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  background-color: var(--blue);
+  box-shadow: 1px 1px 50px rgba(214, 129, 235, 0.2);
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+#arrow1 {
+  transform: scaleX(-1);
+}
+
+#arrow2,
+#arrow1 {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  text-align: center;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 1px 1px 50px rgba(214, 129, 235, 0.2);
+  cursor: pointer;
+  transition: .5s;
+}
+
+#arrow1:hover {
+  transform: scaleX(-1) translateX(10px);
+}
+
+#arrow2:hover {
+
+  transform: translateX(10px);
+}

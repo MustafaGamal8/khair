@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* Example CSS styles for MP3 player */
+.mp3-player {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 46px;
+  background-color: #1f2125;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#progress-bar {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #585e66;
+  display: flex;
+
+}
+#progress-bar span{
+  position: relative;
+  background-color: white;
+  width: 1%;
+  height: 3px;
+}
+#progress-bar span::after{
+  content: "";
+  position: absolute;
+  top: -220%;
+  right: -1.5%;
+  width: 18px;
+  height: 18px;
+  background-color: var(--blue);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .5s
+}
+ #progress-bar span:hover:after {
+  border-radius: 1%;
+}
+
+
+.controls{
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  position: relative;
+}
+
+
+#Mp3time,#timer{
+  user-select: none;
+}
+#next,#play,#before{
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  transition: .5s;
+}
+#next:hover,#play:hover,#before:hover{
+  background-color: #585e66;
+  border-radius: 50%;
+}
+  </style>
+</head>
+
+  <div class="mp3-player">
+    <div id="timer">0:52</div>
+    <audio id="audio" style="display: none;" src="Shahyn - Siri _ شاهين - سيري (Official Music Video) (Prod. By Rashed Muzik) - YouTube.MP3"></audio>
+    <div class="controls">
+      
+      <div id="before"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.5 71.41 288 214.31v83.45l171.5 142.9c20.6 17.04 52.5 2.64 52.5-25.56V96.03c0-27.37-31.9-41.75-52.5-24.62zm-256 0L11.44 231.4c-15.25 12.87-15.25 36.37 0 49.24l192 159.1c20.63 17.12 52.51 2.749 52.51-24.62V95.22c-.85-26.56-31.85-40.94-52.45-23.81z"></path></svg></div>
+      <div id="play"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 2v20.364l16-10.182L4 2Z" fill="white"></path></svg></div>
+      <div id="next"><svg width="24" height="24"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="white" d="m52.51 440.6 171.5-142.9v-83.4L52.51 71.41C31.88 54.28 0 68.66 0 96.03v319.9c0 27.37 31.88 41.77 52.51 24.67zm255.99 0 192-159.1c15.25-12.87 15.25-36.37 0-49.24l-192-159.1c-20.63-17.12-52.51-2.749-52.51 24.62v319.9c.01 25.62 31.91 40.02 52.51 22.92z"></path></svg></div>
+    </div>
+    <p id="Mp3time">1:44</p>
+    <div id="progress-bar"><span></span></div>
+  </div>
+  
+
+  <script>
+    // Example JavaScript code for MP3 player functionality
+    var audio = document.getElementById('audio');
+    var playButton = document.getElementById('play');
+    var progressBar = document.getElementById('progress-bar');
+    var timer = document.getElementById('timer');
+    var Mp3time = document.getElementById('Mp3time');
+    let playmood=true
+playButton.addEventListener('click', function() {
+  if (playmood) {
+    this.innerHTML = 
+      `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h4.571V4H5v16Zm9.143-16v16h4.571V4h-4.571Z" fill="currentColor"></path></svg>
+      `
+    audio.play() ;
+      playmood = false
+  }else{
+    this.innerHTML =`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 2v20.364l16-10.182L4 2Z" fill="white"></path></svg>`
+    audio.pause()
+    playmood=true
+  }
+  Mp3time.innerText = Math.floor(audio.duration / 60) +":"+ Math.floor(audio.duration % 60) 
+});
+
+// pauseButton.addEventListener('click', function() {
+//   audio.pause();
+// });
+let i = 0
+audio.addEventListener('timeupdate', function() {
+  var progress = (audio.currentTime / audio.duration) * 100;
+  seconds = Math.floor(progress / 60)
+  minutes = Math.floor(progress % 60) 
+timer.innerText =((seconds < 10 ? '0' : '') + seconds)+ ':' +  ((minutes < 10 ? '0' : '') + minutes) ;
+  progressBar.firstElementChild.style.width = progress + '%';
+});
+
+
+
+
+    // Change music based on progress
+    progressBar.addEventListener('click', function(event) {
+      var maxProgress = progressBar.clientWidth;
+      var progressClicked = event.offsetX;
+      var progress = (progressClicked / maxProgress) * 100;
+      audio.currentTime = (progress / 100) * audio.duration;
+    });
+  </script>
+</body>
+</html>
