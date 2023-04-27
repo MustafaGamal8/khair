@@ -45,7 +45,7 @@ body {
 nav {
   /* background-color: var(--blue); */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   font-size: 25px;
   margin-top: 15px;
@@ -112,6 +112,7 @@ nav ul li a {
   padding: 5px;
   border-radius: 2px;
   font-weight: 550;
+  white-space: nowrap;
 }
 
 nav ul li a:hover {
@@ -134,6 +135,10 @@ nav ul li a:hover {
 /* __________________media  */
   
   @media (max-width:1200px) {
+    nav{
+      
+  justify-content: space-between;
+    }
  #menu   {
   position: fixed;
   top: 10%;
@@ -161,3 +166,30 @@ nav ul li a:hover {
     width: 200px;
   }
 }
+
+/* ____________________ Search box*/
+#searchbx{
+  width: 50%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+}
+#searchinput{
+  border: 5px solid var(--blue);
+  padding: 10px;
+  width: 80%;
+  border-radius: 5px;
+  text-align: right;
+  font-size: 20px;
+  transition: .5s;
+  box-shadow: 1px 1px 15px rgba(255, 255, 255, 0.3);
+  color: black;
+  font-weight: 900;
+}
+#searchinput:focus{
+  outline: none;
+  scale: 1.1;
+  box-shadow: none;
+}
+
+/* ____________________END of search box*/

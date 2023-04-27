@@ -87,32 +87,6 @@ align-items: center; */
 }
 
 /* ____________________END of surah box*/
-/* ____________________ Search box*/
-#searchbx{
-  width: 50%;
-  margin: 50px auto;
-  display: flex;
-  justify-content: center;
-}
-#searchinput{
-  border: 5px solid var(--blue);
-  padding: 10px;
-  width: 80%;
-  border-radius: 5px;
-  text-align: right;
-  font-size: 20px;
-  transition: .5s;
-  box-shadow: 1px 1px 15px rgba(255, 255, 255, 0.3);
-  color: black;
-  font-weight: 900;
-}
-#searchinput:focus{
-  outline: none;
-  scale: 1.1;
-  box-shadow: none;
-}
-
-/* ____________________END of search box*/
 /* ____________________ ayat box*/
 .ayatanimation {
   animation: ayatanimation 2s forwards;

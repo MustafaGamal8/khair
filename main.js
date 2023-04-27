@@ -1,6 +1,3 @@
-// fetch("http://api.alquran.cloud/v1/edition ")
-// .then((sound)=>sound.json())
-// .then((sound)=> console.log(sound))
 
 // _________________________________DARK MODE
 
