@@ -57,6 +57,7 @@ nav {
   display: block;
   display: flex;
   justify-content: center;
+  z-index: 2;
 }
 
 #menu_bar {
@@ -65,6 +66,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   list-style: none;
+  height: 50%;
 }
 #menu_icon{
   display: none;
@@ -93,10 +95,10 @@ nav {
 }
 @keyframes menubaranimation {
   0%{
-    height: 0;
+    opacity:  0;
   }
   100%{
-    height: 50%;
+    opacity: 100%;
   }
 }
 nav ul li{
