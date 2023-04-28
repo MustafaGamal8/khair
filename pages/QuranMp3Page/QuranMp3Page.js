@@ -161,9 +161,8 @@ function Myplay() {
 let i = 0;
 audio.addEventListener("timeupdate", function () {
   var progress = (audio.currentTime / audio.duration) * 100;
-  var secprogress = (audio.currentTime / audio.duration) * 1000;
-  seconds = Math.floor(secprogress / 60);
-  minutes = Math.floor(secprogress % 60);
+  seconds = Math.floor(progress / 60);
+  minutes = Math.floor(progress % 60);
   timer.innerText =
     (seconds < 10 ? "0" : "") +
     seconds +
