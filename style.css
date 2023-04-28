@@ -12,7 +12,7 @@
 }
 
 html::-webkit-scrollbar {
-  width: 15px;
+  width: 0;
 }
  
 html::-webkit-scrollbar-track {
@@ -193,3 +193,22 @@ nav ul li a:hover {
 }
 
 /* ____________________END of search box*/
+
+/* ____________________in commen*/
+
+#arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--blue);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 15px rgba(255, 255, 255, 0.3);  
+  cursor: pointer;
+}
+
+/* ____________________END in commen*/
+
+

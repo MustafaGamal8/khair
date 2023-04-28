@@ -1,5 +1,5 @@
 
-svg {
+#wave {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -136,18 +136,6 @@ align-items: center; */
   text-align: center;
 }
 
-#arrow {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--blue);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 1px 1px 15px rgba(255, 255, 255, 0.3);  
-  cursor: pointer;
-}
 
 #ayat {
   border: 1px solid var(--blue);
