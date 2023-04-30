@@ -9,35 +9,6 @@
     <link rel="stylesheet" href="QuranMp3Page.css" />
     <link rel="stylesheet" href="../QuranPage/QuranPage.css" />
     <link rel="stylesheet" href="player.css" />
-    <style>
-      #playerpage {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        scale: 0;
-        background-color: var(--maindark);
-        z-index: 9;
-      }
-      .playerpageanimation {
-        animation: playerpageanimation 2s forwards;
-      }
-      #playerpage main {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-      }
-      @keyframes playerpageanimation {
-        0% {
-          scale: 0.2;
-        }
-        100% {
-          scale: 1;
-        }
-      }
-    </style>
   </head>
   <body>
     <!-- <div id="circle2"></div> -->
@@ -74,19 +45,26 @@
 
     <div id="playerpage">
       <main>
-        <div id="arrow" onclick="closesurahtbx()">
+        <div id="arrow" onclick="closebx()">
           <h1>↓</h1>
+        </div>
+        <div id="surahSearchbx">
+          <input
+            type="text"
+            id="surahSearchinput"
+            placeholder="ابحث"
+            onkeyup=" search()"
+          />
         </div>
 
         <div id="surahbx"></div>
-        
+
+       
+      </main>
+    </div>
     <div id="mp3-player">
       <div id="timer">0:52</div>
-      <audio
-        id="audio"
-        style="display: none"
-        src=""
-      ></audio>
+      <audio id="audio" style="display: none" src=""></audio>
       <div class="controls">
         <div id="before">
           <svg
@@ -129,9 +107,6 @@
       <p id="Mp3time">1:44</p>
       <div id="progress-bar"><span></span></div>
     </div>
-      </main>
-    </div>
-
 
     <script src="../../main.js"></script>
     <script src="QuranMp3Page.js"></script>

@@ -168,13 +168,13 @@ nav ul li a:hover {
 }
 
 /* ____________________ Search box*/
-#searchbx{
+#searchbx,#surahSearchbx{
   width: 50%;
   margin: 50px auto;
   display: flex;
   justify-content: center;
 }
-#searchinput{
+#searchinput,#surahSearchinput{
   border: 5px solid var(--blue);
   padding: 10px;
   width: 80%;
@@ -186,7 +186,7 @@ nav ul li a:hover {
   color: black;
   font-weight: 900;
 }
-#searchinput:focus{
+#searchinput:focus,#surahSearchinput:focus{
   outline: none;
   scale: 1.1;
   box-shadow: none;

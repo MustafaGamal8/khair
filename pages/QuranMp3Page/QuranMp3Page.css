@@ -10,6 +10,9 @@
   left: 0;
   transition: 0.5s;
 }
+img{
+  -webkit-user-drag: none;
+}
 nav {
   position: absolute;
   top: 0;
@@ -63,7 +66,7 @@ nav {
   height: 20px;
   /* height: 100%; */
   transition: 1s;
-  background-color: white;
+  background-color: whitesmoke;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
@@ -76,13 +79,17 @@ nav {
   color: var(--maindark);
   scale: 0.8;
 }
-
+.reciterbx:hover #reciterName{
+  color: var(--maindark);
+}
 .reciterContent {
   z-index: 1;
   transition: 1s;
 }
 #reciterName {
   font-weight: 900;
+  color: white;
+  transition: 1s;
 }
 #moshaf {
   font-weight: 600;
@@ -91,11 +98,23 @@ nav {
 /* _____________________media */
 @media (max-width: 1200px) {
   .reciterbx {
-    scale: 0.9;
+    height: 220px;
+    width: 120px;
+    font-size: 10px;
+  }
+  #reciterName{
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
+  .reciterbx img{
+    width: 70%;
+  }
+  #rectangle{
+    width: 100%;
   }
 }
 
-
+/* _______________________________ */
 #addmorereciter{
   background-color:var(--blue);
   width: 300px;
@@ -105,4 +124,44 @@ nav {
   font-weight: 800;
   border-radius: 5px;
   cursor: pointer
+}
+
+
+/* ____________________________________ player- */
+
+#playerpage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scale: 0;
+  background-color: var(--maindark);
+  z-index: 9;
+  overflow-y: scroll;
+}
+.playerpageanimation {
+  animation: playerpageanimation 2s forwards;
+}
+.playerpageanimation2 {
+  animation: playerpageanimation 1s forwards reverse;
+}
+#playerpage main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+@keyframes playerpageanimation {
+  0% {
+    scale: 0.2;
+    display: none;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 100;
+    display: flex;
+  }
 }

@@ -298,3 +298,17 @@ align-items: center; */
 
   transform: translateX(10px);
 }
+
+/* ________________________________________________media */
+@media (max-width: 1200px) {
+  #searchbx{
+    width: 80%;
+  }
+  #quranlogo{
+    width: 60%;
+    margin: auto;
+  }
+  #ayatbx{
+    overflow-y: scroll;
+  }
+}
