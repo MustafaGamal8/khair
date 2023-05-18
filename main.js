@@ -35,6 +35,7 @@ let menu_icon = document.getElementById("menu_icon");
 let menu = document.getElementById("menu");
 let menu_bar = document.getElementById("menu_bar");
 let menu_mood = "true";
+
 menu_icon.addEventListener("click", () => {
   if (menu_mood == "true") {
     menu_bar.classList.remove("menubaranimation2");

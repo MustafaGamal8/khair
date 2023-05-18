@@ -3,7 +3,7 @@ let Quranmp3 = fetch("https://www.mp3quran.net/api/v3/reciters?language=ar")
   .then((sound) => (sound = sound.reciters));
 
 // Quranmp3.then((sound) => {
-//   console.log(sound[86]);
+  // console.log(sound[86]);
 //   console.log(sound[86].name)
 //   console.log(sound[86].moshaf[0])
 //   console.log(sound[86].moshaf[0].surah_total)
@@ -88,56 +88,56 @@ let QuranData = fetch("https://api.alquran.cloud/v1/quran/quran-uthmani")
 
 let surahbx = document.getElementById("surahbx");
 let playerpage = document.getElementById("playerpage");
-let publicReciter ;
+let publicReciter;
 function checksurah(z) {
-    closebx()
-  surahbx.innerHTML = ""
-    publicReciter = z
-
-    
-  Quranmp3.then((sound) => {
-     var reciterSurhs = sound[z].moshaf[0].surah_list.split(",");
-    QuranData.then((Quran) => {
-      for (let i = 0; i < sound[z].moshaf[0].surah_total; i++) {
-        let n = reciterSurhs[i] - 1;
-          
-      let surahSrc =  sound[z].moshaf[0].server + reciterSurhs[i].padStart(3, "0") + ".mp3";
-        AddSurahToBoxes(n,surahSrc)
-      }
-    });
-  });
-  
-}
-
-
-// _________________________________surah search
-let surahSearchinput = document.getElementById("surahSearchinput")
-  
-surahSearchinput.addEventListener("keyup",()=>{
-  let z = publicReciter
-  surahbx.innerHTML = ""
+  closebx();
+  surahbx.innerHTML = "";
+  publicReciter = z;
 
   Quranmp3.then((sound) => {
     var reciterSurhs = sound[z].moshaf[0].surah_list.split(",");
-   QuranData.then((Quran) => {
-     for (let i = 0; i < sound[z].moshaf[0].surah_total; i++) {
-       let n = reciterSurhs[i] - 1;
-       let tempSurahName = removeArabicDiacritics(Quran[n].name)
-       if (tempSurahName.includes(surahSearchinput.value)) {
-        
-  let surahSrc =  sound[z].moshaf[0].server + reciterSurhs[i].padStart(3, "0") + ".mp3";
-  AddSurahToBoxes(n,surahSrc)
-       }
-     }
-   });
- });
-})
+    QuranData.then((Quran) => {
+      for (let i = 0; i < sound[z].moshaf[0].surah_total; i++) {
+        let n = reciterSurhs[i] - 1;
+
+        let surahSrc =
+          sound[z].moshaf[0].server + reciterSurhs[i].padStart(3, "0") + ".mp3";
+        AddSurahToBoxes(n, surahSrc);
+      }
+    });
+  });
+}
+
+// _________________________________surah search
+let surahSearchinput = document.getElementById("surahSearchinput");
+
+surahSearchinput.addEventListener("keyup", () => {
+  let z = publicReciter;
+  surahbx.innerHTML = "";
+
+  Quranmp3.then((sound) => {
+    var reciterSurhs = sound[z].moshaf[0].surah_list.split(",");
+    QuranData.then((Quran) => {
+      for (let i = 0; i < sound[z].moshaf[0].surah_total; i++) {
+        let n = reciterSurhs[i] - 1;
+        let tempSurahName = removeArabicDiacritics(Quran[n].name);
+        if (tempSurahName.includes(surahSearchinput.value)) {
+          let surahSrc =
+            sound[z].moshaf[0].server +
+            reciterSurhs[i].padStart(3, "0") +
+            ".mp3";
+          AddSurahToBoxes(n, surahSrc);
+        }
+      }
+    });
+  });
+});
 // ______________________________
 
-function AddSurahToBoxes(n,surahsrc) {
+function AddSurahToBoxes(n, surahsrc) {
   QuranData.then((Quran) => {
     let temp = document.createElement("div");
-  temp.innerHTML = `
+    temp.innerHTML = `
 <div class="surah" onclick="playQuran('${surahsrc}')">
   <div class="surahNamberbx"><p class="surahNamber">${Quran[n].number}</p></div>
   <div class="surahNamebx">
@@ -150,60 +150,34 @@ function AddSurahToBoxes(n,surahsrc) {
   </div>
 </div>
 `;
-  surahbx.appendChild(temp);
-  })
-  
-  
+    surahbx.appendChild(temp);
+  });
 }
-
-
-
-
-
-
-
 
 // ______________________________
 
 // ________________close box
-let openmood = "close"
+let openmood = "close";
 function closebx() {
   if (openmood == "close") {
-    playerpage.classList.remove("playerpageanimation2")
-    playerpage.style.display="flex"
+    playerpage.classList.remove("playerpageanimation2");
+    playerpage.style.display = "flex";
     setTimeout(() => {
-    playerpage.classList.add("playerpageanimation")
-  }, .1);
+      playerpage.classList.add("playerpageanimation");
+    }, 0.1);
 
-    openmood = "open"
-  }else{
-    
-  playerpage.classList.remove("playerpageanimation")
-  setTimeout(() => {
-    playerpage.classList.add("playerpageanimation2")
-    
-  }, .1);
-  setTimeout(() => {
-  playerpage.style.display="none"
-  }, 1100);
-  openmood = "close"
+    openmood = "open";
+  } else {
+    playerpage.classList.remove("playerpageanimation");
+    setTimeout(() => {
+      playerpage.classList.add("playerpageanimation2");
+    }, 0.1);
+    setTimeout(() => {
+      playerpage.style.display = "none";
+    }, 1100);
+    openmood = "close";
   }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // __________________________________player
 
@@ -216,25 +190,23 @@ var Mp3time = document.getElementById("Mp3time");
 var download_btn = document.getElementById("download_btn");
 let playmood = true;
 
-mp3_player.style.display = "none"
+mp3_player.style.display = "none";
 
 function playQuran(src) {
-  
-  plusTimer = .100
-  audio.src = ""
-  mp3_player.style.display = "flex"
+  plusTimer = 0.1;
+  audio.src = "";
+  mp3_player.style.display = "flex";
   audio.src = src;
   playmood = true;
-  download_btn.download = src
+  download_btn.download = src;
   setTimeout(() => {
     Myplay();
   }, 800);
-  
 }
 
-playButton.addEventListener("click",()=>{
+playButton.addEventListener("click", () => {
   Myplay();
-})
+});
 function Myplay() {
   if (playmood) {
     playButton.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h4.571V4H5v16Zm9.143-16v16h4.571V4h-4.571Z" fill="currentColor"></path></svg>
@@ -248,7 +220,6 @@ function Myplay() {
   }
   Mp3time.innerText =
     Math.floor(audio.duration / 60) + ":" + Math.floor(audio.duration % 60);
- 
 }
 
 let i = 0;
@@ -272,53 +243,47 @@ progressBar.addEventListener("click", function (event) {
   audio.currentTime = (progress / 100) * audio.duration;
 });
 
+let before = document.getElementById("before");
+let next = document.getElementById("next");
+let plusTimer = 0.1;
+next.addEventListener("click", () => {
+  plusTimer = audio.currentTime / audio.duration + 0.1;
+  audio.currentTime = audio.duration * plusTimer;
+});
 
-let before = document.getElementById("before") 
-let next = document.getElementById("next") 
-let plusTimer = .100
-next.addEventListener("click",()=>{
-  plusTimer =  (audio.currentTime /audio.duration)  + .1
-  audio.currentTime =  audio.duration * plusTimer ;
-
-})
-
-before.addEventListener("click",()=>{
-  plusTimer =  (audio.currentTime /audio.duration)  - .1
-  audio.currentTime =   audio.duration * plusTimer  ;
- 
-
-})
-
-
+before.addEventListener("click", () => {
+  plusTimer = audio.currentTime / audio.duration - 0.1;
+  audio.currentTime = audio.duration * plusTimer;
+});
 
 function download_quran() {
-  let url = download_btn.download
+  let url = download_btn.download;
 
-    fetch(url)
-      .then(response => response.blob())
-      .then(blob => {
-        // Create a temporary anchor element
-        const a = document.createElement('a');
-        a.style.display = 'none';
-  
-        // Create a Blob URL for the audio file
-        const blobUrl = URL.createObjectURL(blob);
-        a.href = blobUrl;
-        a.download = url.substring(url.lastIndexOf('/') + 1);
-  
-        // Append the anchor element to the document body
-        document.body.appendChild(a);
-  
-        // Trigger a click event on the anchor element
-        a.click();
-  
-        // Remove the temporary anchor element
-        document.body.removeChild(a);
-  
-        // Revoke the Blob URL to free up memory
-        URL.revokeObjectURL(blobUrl);
-      })
-      .catch(error => {
-        console.error('An error occurred during the download:', error);
-      });
+  fetch(url)
+    .then((response) => response.blob())
+    .then((blob) => {
+      // Create a temporary anchor element
+      const a = document.createElement("a");
+      a.style.display = "none";
+
+      // Create a Blob URL for the audio file
+      const blobUrl = URL.createObjectURL(blob);
+      a.href = blobUrl;
+      a.download = url.substring(url.lastIndexOf("/") + 1);
+
+      // Append the anchor element to the document body
+      document.body.appendChild(a);
+
+      // Trigger a click event on the anchor element
+      a.click();
+
+      // Remove the temporary anchor element
+      document.body.removeChild(a);
+
+      // Revoke the Blob URL to free up memory
+      URL.revokeObjectURL(blobUrl);
+    })
+    .catch((error) => {
+      console.error("An error occurred during the download:", error);
+    });
 }
