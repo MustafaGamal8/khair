@@ -1,6 +1,7 @@
 nav #menu {
   z-index: 4;
 }
+
 #rectangle {
   width: 70%;
   margin: 50px auto;
@@ -14,7 +15,6 @@ nav #menu {
 #rectangle img {
   height: 200px;
 }
-
 #circle2 {
   position: fixed;
   background-color: #a0d3fe;
@@ -96,6 +96,10 @@ nav #menu {
   #rectangle {
     width: 100%;
   }
+  
+#searchbx{
+    width: 70%;
+}
   #radioMp3::before {
     height: 130px;
   }
