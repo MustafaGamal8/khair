@@ -72,7 +72,6 @@ var audio = document.getElementById("audio");
 var playButton = document.getElementById("play");
 var progressBar = document.getElementById("progress-bar");
 var timer = document.getElementById("timer");
-var Mp3time = document.getElementById("Mp3time");
 let playmood = true;
 
 mp3_player.style.display = "none";
@@ -97,16 +96,10 @@ function Myplay() {
     playButton.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h4.571V4H5v16Zm9.143-16v16h4.571V4h-4.571Z" fill="currentColor"></path></svg>
         `;
     audio.play();
-    setInterval(() => {
-      timer.innerHTML = temptimer + 1;
-      temptimer++;
-    }, 1000);
     playmood = false;
   } else {
     playButton.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 2v20.364l16-10.182L4 2Z" fill="white"></path></svg>`;
     audio.pause();
     playmood = true;
   }
-  Mp3time.innerText =
-    Math.floor(audio.duration / 60) + ":" + Math.floor(audio.duration % 60);
 }
