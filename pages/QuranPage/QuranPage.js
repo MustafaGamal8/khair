@@ -179,9 +179,7 @@ let sectemp = 10
 function loadmore(n) {
   
   QuranData.then((Quran)=>{
-    if (sectemp < Quran[n].ayahs.length) {    
-      console.log(Quran[n].ayahs.length)
-      console.log(sectemp)
+    if (sectemp < Quran[n].ayahs.length) {
     sectemp = sectemp + 10
     let temp = document.getElementById("temp");
     temp.innerHTML = ""
@@ -194,12 +192,11 @@ function loadmore(n) {
   })
   
 }
+
 function loadless(n) {
   QuranData.then((Quran)=>{
-    if (sectemp > Quran[n].ayahs.length){
-    sectemp = sectemp - 10
-    
-    
+    if (sectemp < Quran[n].ayahs.length && sectemp -10 > 0 ){
+      sectemp = sectemp - 10
     let temp = document.getElementById("temp");
     temp.innerHTML = ""
     console.log(sectemp)
@@ -210,5 +207,4 @@ function loadless(n) {
    `;} 
    }
   })
-  
 }

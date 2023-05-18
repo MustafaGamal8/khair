@@ -136,7 +136,9 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  scale: 0;
+  scale: 1;
+  opacity: 0;
+  display: none;
   background-color: var(--maindark);
   z-index: 9;
   overflow-y: scroll;
@@ -156,12 +158,10 @@ nav {
 }
 @keyframes playerpageanimation {
   0% {
-    scale: 0.2;
+    /* opacity: 0; */
     display: none;
-    opacity: 0;
   }
   100% {
-    scale: 1;
     opacity: 100;
     display: flex;
   }

@@ -207,6 +207,10 @@ nav ul li a:hover {
   align-items: center;
   box-shadow: 1px 1px 15px rgba(255, 255, 255, 0.3);  
   cursor: pointer;
+  user-select: none;
+}
+#arrow > h1{
+  user-select: none;
 }
 
 /* ____________________END in commen*/

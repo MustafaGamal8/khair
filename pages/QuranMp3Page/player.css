@@ -68,3 +68,7 @@
         background-color: #585e66;
         border-radius: 50%;
       }
+      
+      #download_btn {
+        cursor: pointer;
+      }

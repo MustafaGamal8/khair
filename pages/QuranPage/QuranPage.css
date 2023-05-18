@@ -139,8 +139,8 @@ align-items: center; */
 
 #ayat {
   border: 1px solid var(--blue);
-  margin: 35px ;
-  padding: 10px;
+  margin: 15px ;
+  padding: 5px;
   border-radius: 5px;
   line-height: 50px;
   letter-spacing: 2px;
@@ -310,5 +310,8 @@ align-items: center; */
   }
   #ayatbx{
     overflow-y: scroll;
+  }
+  h2{
+    font-size: 20px;
   }
 }
