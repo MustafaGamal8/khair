@@ -56,6 +56,7 @@ function search() {
     GetreciterFT(10);
   }
 }
+
 function removeArabicDiacritics(text) {
   var diacritics = /[\u064B-\u0652\u06E1\u0670]/g;
   var hamza = /[أ,آ,ٱ,إ]/g;

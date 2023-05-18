@@ -1,0 +1,108 @@
+nav #menu {
+  z-index: 4;
+}
+#rectangle {
+  width: 70%;
+  margin: 50px auto;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+#rectangle img {
+  height: 200px;
+}
+
+#circle2 {
+  position: fixed;
+  background-color: #a0d3fe;
+  width: 900px;
+  height: 900px;
+  clip-path: circle(50% at left 100%);
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+
+/* _______________________________________________- */
+
+#radiobx {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+#radioMp3 {
+  position: relative;
+  background-color: var(--blue);
+  height: 250px;
+  width: 180px;
+  margin: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.5s;
+}
+#radioMp3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: white;
+  height: 150px;
+  width: 100%;
+  transition: 0.8s;
+}
+#radioMp3:hover::before {
+  top: 50%;
+}
+#radioMp3:hover {
+  color: #a0c8ff;
+  border-radius: 10px;
+}
+
+#radioMp3 img {
+  z-index: 2;
+  width: 100px;
+  transition: 0.5s;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+#radioMp3:hover img {
+  scale: 0.7;
+}
+#radioName {
+  z-index: 2;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+/* _____________________media */
+@media (max-width: 1200px) {
+  #circle2 {
+    width: 500px;
+    height: 600px;
+  }
+  #rectangle {
+    width: 100%;
+  }
+  #radioMp3::before {
+    height: 130px;
+  }
+  #radioMp3 {
+    height: 220px;
+    width: 150px;
+    font-size: 10px;
+    margin: 15px;
+  }
+}

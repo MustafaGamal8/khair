@@ -117,14 +117,16 @@ nav {
 
 /* _______________________________ */
 #addmorereciter{
+  position: relative;
   background-color:var(--blue);
-  width: 300px;
+  width: 200px;
   margin: 15px auto;
+  padding: 10px;
   text-align: center;
   font-size: 15px;
   font-weight: 800;
   border-radius: 5px;
-  cursor: pointer
+  cursor: pointer;
 }
 
 
