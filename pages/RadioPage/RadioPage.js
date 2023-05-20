@@ -5,7 +5,6 @@ let radiobx = document.getElementById("radiobx");
 function GetRadio() {
   radiobx.innerHTML = "";
   Radio.then((radio) => {
-    console.log(radio);
     for (let i = 0; i < 10; i++) {
       let temp = document.createElement("div");
       temp.innerHTML = `
