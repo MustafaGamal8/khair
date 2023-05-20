@@ -96,10 +96,10 @@ nav #menu {
   #rectangle {
     width: 100%;
   }
-  
-#searchbx{
+
+  #searchbx {
     width: 70%;
-}
+  }
   #radioMp3::before {
     height: 130px;
   }

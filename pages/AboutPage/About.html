@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .About{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .myImg{
+            border: 5px solid var(--blue);
+            border-radius: 50%;
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .myImg img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transition: .5s;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .myImg:hover img{
+            scale: 1.8;
+        }
+        .myName{
+            position: relative;
+            margin-top: 10px;
+        }
+        .myName::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            right:  0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--maindark);
+            border-left: 2px solid var(--blue);
+            animation: myNameAnimation 5s infinite;
+        }
+        @keyframes myNameAnimation {
+            0%{
+                width: 100%;
+            }
+            80%{
+                width: 0%;
+            }
+            100%{
+                width: 0%;
+            }
+        }
+        .contact{
+            width: 250px;
+            margin: 10px;
+            padding: 5px;
+            background-color: var(--blue);
+            border-radius: 5px;
+            text-align: center;
+            transition: .2s;
+            cursor: pointer;
+        }
+        .contact:hover{
+            background-color: #a0c8ff;;
+        }
+        .contact a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <img src="../../asset/icons8-menu.svg" alt="" id="menu_icon">
+        <div id="menu">
+          <ul id="menu_bar">
+            <li><a href="#" id="contact">اتصل بنا</a></li>
+            <li><a href="#">من نحن</a></li>
+            <li><a href="../RadioPage/RadioPage.html">راديو القرأن</a></li>
+            <li><a href="../QuranMp3Page/QuranMp3Page.html">الشيوخ</a></li>
+            <li><a href="#">قرأن</a></li>
+            <li><a href="../../index.html">الرئيسية</a></li>
+          </ul>
+        </div>
+    
+        <h1 id="logo">خير</h1>
+    </nav>
+
+    <div class="About">
+        <div class="myImg"><img src="../../asset/me.jpeg" alt="" ></div>
+        <h1 class="myName">Mustafa Gamal Elsayed</h1>
+        <p>Front End Dev</p>
+        <div class="contact-us">
+            <div class="contact"><a href="https://www.linkedin.com/in/mustafa-gamal-ba48a7243/" target="_blank"><i class="fa-brands fa-linkedin"></i>  Mustafa Gamal</a></div>
+            <div class="contact"><a href="https://github.com/mustafagamal51112" target="_blank"><i class="fa-brands fa-github" ></i>  Mustafa Gamal</a></div>
+            <div class="contact"><a href="https://www.facebook.com/mustafa.gamal.9231712/" target="_blank"><i class="fa-brands fa-facebook" ></i>  Mustafa Gamal</a></div>
+            <div class="contact"><a href="https://wa.me/+201276071829"><i class="fa-brands fa-whatsapp"></i>  Mustafa Gamal</a></div>
+        </div>
+    </div>
+
+
+
+
+<script src="../../main.js"></script>
+</body>
+</html>
