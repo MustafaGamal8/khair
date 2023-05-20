@@ -1,3 +1,12 @@
+// ______________________________________Api
+let Quranmp3 = fetch("https://www.mp3quran.net/api/v3/reciters?language=ar")
+  .then((sound) => sound.json())
+  .then((sound) => (sound = sound.reciters));
+
+  const Radio = fetch("https://www.mp3quran.net/api/v3/radios?language=ar").then(
+    (radio) => radio.json()
+  );
+
 
 // _________________________________DARK MODE
 

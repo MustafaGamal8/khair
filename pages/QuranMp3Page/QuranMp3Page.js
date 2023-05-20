@@ -1,15 +1,4 @@
-let Quranmp3 = fetch("https://www.mp3quran.net/api/v3/reciters?language=ar")
-  .then((sound) => sound.json())
-  .then((sound) => (sound = sound.reciters));
 
-// Quranmp3.then((sound) => {
-  // console.log(sound[86]);
-//   console.log(sound[86].name)
-//   console.log(sound[86].moshaf[0])
-//   console.log(sound[86].moshaf[0].surah_total)
-//   console.log(sound[86].moshaf[0].server)
-//   console.log(sound[86].moshaf[0].surah_list);
-// });
 
 // ____________________________________Get reciter for first time
 let reciterS = document.getElementById("reciterS");
