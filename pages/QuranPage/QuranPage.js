@@ -1,7 +1,8 @@
-const ApiLink = 'https://api.alquran.cloud/v1/quran/quran-uthmani';
-let QuranData = fetch(ApiLink)
+
+let QuranData = fetch("https://api.alquran.cloud/v1/quran/quran-uthmani")
   .then((Quran) => Quran.json())
   .then((Quran) => (Quran = Quran.data.surahs))
+  // .catch((erorr)=>console.log(erorr))
   // .then((Quran) =>  console.log(Quran));
 
 // API DATA

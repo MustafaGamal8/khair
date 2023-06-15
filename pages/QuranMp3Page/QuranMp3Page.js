@@ -1,4 +1,13 @@
 
+let Quranmp3 = fetch("https://www.mp3quran.net/api/v3/reciters?language=ar")
+  .then((sound) => sound.json())
+  .then((sound) => (sound = sound.reciters))
+  .catch((error)=>{console.log(error)})
+  
+  
+let QuranData = fetch("https://api.alquran.cloud/v1/quran/quran-uthmani")
+.then((Quran) => Quran.json())
+.then((Quran) => (Quran = Quran.data.surahs));
 
 // ____________________________________Get reciter for first time
 let reciterS = document.getElementById("reciterS");
@@ -65,10 +74,7 @@ function addmorereciter() {
 
 // _______________________________show surah
 
-let QuranData = fetch("https://api.alquran.cloud/v1/quran/quran-uthmani")
-  .then((Quran) => Quran.json())
-  .then((Quran) => (Quran = Quran.data.surahs));
-// .then((Quran) => {
+// QuranData.then((Quran) => {
 //   console.log(Quran[13 - 1]);
 // });
 
