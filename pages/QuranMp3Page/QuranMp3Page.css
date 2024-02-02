@@ -42,8 +42,8 @@ nav {
 }
 .reciterbx {
   position: relative;
-  background-color: #a0d3fe;
-  /* background-color: var(--blue); */
+  /* background-color: #a0d3fe; */
+  background-color: var(--secdark);
   height: 300px;
   width: 200px;
   margin: 30px;

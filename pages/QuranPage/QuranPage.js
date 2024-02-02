@@ -1,78 +1,93 @@
+async function fetchQuranData() {
+  try {
+    const response = await fetch("https://api.alquran.cloud/v1/surah");
+    const Quran = await response.json();
+    return Quran.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 
-let QuranData = fetch("https://api.alquran.cloud/v1/quran/quran-uthmani")
-  .then((Quran) => Quran.json())
-  .then((Quran) => (Quran = Quran.data.surahs))
-  // .catch((erorr)=>console.log(erorr))
-  // .then((Quran) =>  console.log(Quran));
 
-// API DATA
-//  number
-//  name
-//  englishName
-// englishNameTranslation
-// revelationType
-// ayahs
-
+async function fetchSurahData(numberOfSurah) {
+  try {
+    const response = await fetch(
+      `https://api.alquran.cloud/v1/surah/${numberOfSurah}/ar.asad`
+    );
+    const surah = await response.json();
+    return surah.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }  
+}
 // ___________________________GET surah details
 
 let surahbx = document.getElementById("surahbx");
 
-function firstcheck() {
+async function firstcheck() {
   surahbx.innerHTML = "";
-  for (let i = 0; i < 12; i++) {
-    checksurah(i);
+  try {
+    const Quran = await fetchQuranData();
+    for (let i = 0; i < 12; i++) {
+      checksurah(i, Quran);
+    }
+  } catch (error) {
+    console.error(error);
   }
 }
 firstcheck();
 
-function checksurah(n) {
-  QuranData.then((Quran) => {
-    let temp = document.createElement("div");
-    temp.innerHTML = `
-    <div class="surah" onclick="Opensurah(${n})">
+async function checksurah(n, Quran) {
+  let temp = document.createElement("div");
+  temp.innerHTML = `
+    <div class="surah" onclick="Opensurah(${n +1})">
       <div class="surahNamberbx"><p class="surahNamber">${Quran[n].number}</p></div>
       <div class="surahNamebx">
         <h1 class="surahNameAr">${Quran[n].name}</h1>
         <p class="surahNameEn">${Quran[n].englishName}</p>
       </div>
       <div class="ayahtNumbersbx">
-        <p class="ayahtNumbers">${Quran[n].ayahs.length}<p>
+        <p class="ayahtNumbers">${Quran[n].numberOfAyahs}<p>
         <p>Ayat</p>
       </div>
     </div>
     `;
-    surahbx.appendChild(temp);
-  });
+  surahbx.appendChild(temp);
 }
 
 // ______________________________________Search in suarhs--
+
 let searchinput = document.getElementById("searchinput");
-function search() {
+async function search() {
   surahbx.innerHTML = "";
   let mylist = [];
-
-  QuranData.then((Quran) => {
+  try {
+    const Quran = await fetchQuranData();
     for (let i = 0; i < 114; i++) {
       let temp = removeArabicDiacritics(Quran[i].name);
-
       if (temp.includes(searchinput.value) && searchinput.value != "") {
-        checksurah(i);
+        checksurah(i, Quran);
       }
     }
-  });
-  if (searchinput.value == "") {
-    firstcheck();
+    if (searchinput.value == "") {
+      await firstcheck();
+    }
+  } catch (error) {
+    console.error(error);
   }
 }
 
 // ___________________________fun to open surah
 
 let ayatbx = document.getElementById("ayatbx");
-
-function Opensurah(n) {
+let surah
+async function Opensurah(n) {
   ayatbx.classList.add("ayatanimation");
   var Nsurahnumber = n;
-  QuranData.then((Quran) => {
+   surah = await fetchSurahData(Nsurahnumber);
+  try {
     ayatbx.innerHTML = `    
     <main>
     <nav class=" secnav">
@@ -86,13 +101,13 @@ function Opensurah(n) {
       <button id="tashkel" onclick="tashkel(${Nsurahnumber})">التشكيل</button>
     </nav>
 
-    <h1 id="ayahname">${removeArabicDiacritics(Quran[n].name)}</h1>
+    <h1 id="ayahname">${removeArabicDiacritics(surah.name)}</h1>
     <div id="ayat"><h2 id="temp"></h2>
     </div>
 
     <div class="arrows">
-    <div id="arrow1" onclick="loadmore(${n})" ><span>&#10140</span></div>
-    <div id="arrow2" onclick="loadless(${n})" ><span>&#10140</span></div>
+    <div id="arrow1" onclick="loadmore()" ><span>&#10140</span></div>
+    <div id="arrow2" onclick="loadless()" ><span>&#10140</span></div>
   </div>
   </main>
     `;
@@ -100,11 +115,13 @@ function Opensurah(n) {
     let temp = document.getElementById("temp");
     for (let i = 0; i < 10; i++) {
       temp.innerHTML += `
-       ${Quran[n].ayahs[i].text}
-        <p id="numberofaya"><span>${Quran[n].ayahs[i].numberInSurah}</span></p>
+       ${surah.ayahs[i].text}
+        <p id="numberofaya"><span>${surah.ayahs[i].numberInSurah}</span></p>
       `;
     }
-  });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 function closesurahtbx() {
@@ -125,8 +142,8 @@ function removeArabicDiacritics(text) {
   return newtext;
 }
 let tashkelmode = "true";
-function tashkel(n) {
-  QuranData.then((Quran) => {
+async function tashkel(n) {
+  try {
     ayatbx.innerHTML = `    
     <main>
     <nav class=" secnav">
@@ -140,13 +157,13 @@ function tashkel(n) {
       <button id="tashkel" onclick="tashkel(${n})">التشكيل</button>
     </nav>
 
-    <h1 id="ayahname">${removeArabicDiacritics(Quran[n].name)}</h1>
+    <h1 id="ayahname">${removeArabicDiacritics(surah.name)}</h1>
     <div id="ayat"><h2 id="temp"></h2>
     </div>
 
     <div class="arrows">
-    <div id="arrow1" onclick="loadmore(${n})" ><span>&#10140</span></div>
-    <div id="arrow2" onclick="loadless(${n})" ><span>&#10140</span></div>
+    <div id="arrow1" onclick="loadmore()" ><span>&#10140</span></div>
+    <div id="arrow2" onclick="loadless()" ><span>&#10140</span></div>
   </div>
   </main>
     `;
@@ -158,54 +175,56 @@ function tashkel(n) {
       tashkelmode = "false";
       for (let i = sectemp - 10; i < sectemp; i++) {
         temp.innerHTML += `
-      ${removeArabicDiacritics(Quran[n].ayahs[i].text)}
-       <p id="numberofaya"><span>${Quran[n].ayahs[i].numberInSurah}</span></p>
+      ${removeArabicDiacritics(surah.ayahs[i].text)}
+       <p id="numberofaya"><span>${surah.ayahs[i].numberInSurah}</span></p>
      `;
       }
     } else if (tashkelmode == "false") {
       tashkelmode = "true";
       for (let i = sectemp - 10; i < sectemp ; i++) {
-        console.log(Quran[n].ayahs.length)
         temp.innerHTML += `
-      ${Quran[n].ayahs[i].text}
-       <p id="numberofaya"><span>${Quran[n].ayahs[i].numberInSurah}</span></p>
+      ${surah.ayahs[i].text}
+       <p id="numberofaya"><span>${surah.ayahs[i].numberInSurah}</span></p>
      `;
       }
     }
-  });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 
 let sectemp = 10
-function loadmore(n) {
-  
-  QuranData.then((Quran)=>{
-    if (sectemp < Quran[n].ayahs.length) {
-    sectemp = sectemp + 10
-    let temp = document.getElementById("temp");
-    temp.innerHTML = ""
-    for (let i = sectemp -10; i < sectemp; i++) {
-      temp.innerHTML += `
-    ${Quran[n].ayahs[i].text}
-     <p id="numberofaya"><span>${Quran[n].ayahs[i].numberInSurah}</span></p>
-   `;}
+ function loadmore() {
+  try {
+    if (sectemp < surah.ayahs.length) {
+      sectemp = sectemp + 10
+      let temp = document.getElementById("temp");
+      temp.innerHTML = ""
+      for (let i = sectemp -10; i < sectemp; i++) {
+        temp.innerHTML += `
+      ${surah.ayahs[i].text}
+       <p id="numberofaya"><span>${surah.ayahs[i].numberInSurah}</span></p>
+     `;}
+    }
+  } catch (error) {
+    console.error(error);
   }
-  })
-  
 }
 
-function loadless(n) {
-  QuranData.then((Quran)=>{
-    if (sectemp < Quran[n].ayahs.length && sectemp -10 > 0 ){
+async function loadless() {
+  try {
+    if (sectemp < surah.ayahs.length && sectemp -10 > 0 ){
       sectemp = sectemp - 10
-    let temp = document.getElementById("temp");
-    temp.innerHTML = ""
-    console.log(sectemp)
-    for (let i = sectemp - 10; i < sectemp; i++) {
-      temp.innerHTML += `
-    ${Quran[n].ayahs[i].text}
-     <p id="numberofaya"><span>${Quran[n].ayahs[i].numberInSurah}</span></p>
-   `;} 
-   }
-  })
+      let temp = document.getElementById("temp");
+      temp.innerHTML = ""
+      for (let i = sectemp - 10; i < sectemp; i++) {
+        temp.innerHTML += `
+      ${surah.ayahs[i].text}
+       <p id="numberofaya"><span>${surah.ayahs[i].numberInSurah}</span></p>
+     `;} 
+     }
+  } catch (error) {
+    console.error(error);
+  }
 }

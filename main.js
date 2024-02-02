@@ -13,7 +13,6 @@ let mood = "dark";
 let root = document.documentElement;
 function changeMode() {
   let darkmode = document.getElementById("darkmode").firstElementChild;
-  console.log(darkmode);
   if (mood == "dark") {
     darkmode.classList.remove("lightmode");
     setTimeout(() => {

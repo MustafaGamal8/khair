@@ -2,15 +2,18 @@
   font-family: 'Tajawal'; 
   src: url('css/fonts/Tajawal-ExtraLight-1.ttf') ; 
 }
-
-:root{
-  --maindark:#0f172a;
+:root {
+  --maindark: #25274d;
+  --secdark: #3a3e6e;
+  --blue: #4a4e9e;
+  --lightyellow: #fce097;
+  --white: #ffffff;
+}
+  /* --maindark:#0f172a;
   --secdark:#343a40;
   --blue:#2ca4ab;
   --lightyellow:#ffe197;
-  --white:white;
-}
-
+  --white:white; */
 html::-webkit-scrollbar {
   width: 0;
 }
